@@ -188,20 +188,9 @@ def about():
     return render_template("about.html",login=login)
 
 
-@app.route("/contact",methods=["GET","POST"])
+@app.route("/contact")
 def contact():
     login = current_user.is_authenticated
-    if request.method == "POST":
-        name = request.form['name']
-        email = request.form['email']
-        ph = request.form['ph']
-        message = request.form['message']
-        text = "successfully send your message"
-        with smtplib.SMTP("smtp.gmail.com") as connection:
-            connection.starttls()
-            connection.login(user=your_email, password=your_password)
-            connection.sendmail(from_addr=email, to_addrs=your_email, msg=f"Subject:Hello\n\nI'm {name}\n{message}")
-        return render_template('contact.html', text=text)
     return render_template("contact.html",login=login,year=year)
 
 
