@@ -11,9 +11,15 @@ from flask_gravatar import Gravatar
 from functools import wraps
 import smtplib
 import datetime
+import os
+from dotenv import load_dotenv
 
-your_email = "htetaung200071@gmail.com"
-your_password = "30221018"
+load_dotenv()
+
+
+your_email = os.getenv("EMAIL")
+your_password = os.getenv("PASSWORD")
+
 
 now = datetime.datetime.now()
 year = now.year
