@@ -215,7 +215,7 @@ def add_new_post():
     return render_template("make-post.html", form=form,login=login,year=year)
 
 
-@app.route("/edit-post/<int:post_id>")
+@app.route("/edit-post/<int:post_id>",methods=["GET","POST"])
 @admin_required
 def edit_post(post_id):
     login = current_user.is_authenticated
